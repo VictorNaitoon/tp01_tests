@@ -29,18 +29,34 @@ namespace SistemaGestionTienda.Class
                     return producto;
                 }
             }
-            return null;
+            throw new Exception($"El producto {nombre} no se encontró en la tienda.");
         }
 
         public bool EliminarProducto(string nombre)
         {
-            var producto = BuscarProducto(nombre);
-            if (producto != null)
+            try
             {
+                var producto = BuscarProducto(nombre);
                 inventario.Remove(producto);
                 return true;
             }
-            return false;
+            catch (Exception)
+            {
+                throw new Exception($"No se puede eliminar el producto {nombre} porque no existe en la tienda.");
+            }
+        }
+
+        public void ActualizarPrecio(string nombre, decimal nuevoPrecio)
+        {
+            try
+            {
+                var producto = BuscarProducto(nombre);
+                producto.Precio = nuevoPrecio;
+            }
+            catch (Exception)
+            {
+                throw new Exception($"No se puede actualizar el precio del producto {nombre} porque no se encontró en la tienda.");
+            }
         }
     }
 }

@@ -8,9 +8,9 @@ namespace SistemaGestionTienda.Class
 {
     public class Producto
     {
-        public string Nombre { get; private set; }
-        public decimal Precio { get; private set; }
-        public string Categoria { get; private set; }
+        public string Nombre { get; set; }
+        public decimal Precio { get; set; }
+        public string Categoria { get; set; }
 
         public Producto(string nombre, decimal precio, string categoria)
         {
