@@ -9,25 +9,28 @@ using Moq;
 
 namespace TestGestionTienda
 {
-    public class TestTienda
+    public class TestTienda : IClassFixture<TiendaFixture>
     {
+        private readonly Tienda _tienda;
+
+        public TestTienda(TiendaFixture _tiendaFixture)
+        {
+            _tienda = _tiendaFixture.TiendaConProductos;
+        }
+
         [Fact]
         public void AgregarProducto_ProductoEstaEnInventario()
         {
-            var tienda = new Tienda();
-            var producto = new Producto("Rasta", 5.5m, "Alfajor");
-            tienda.AgregarProducto(producto);
-            Assert.Equal(producto, tienda.BuscarProducto("Rasta"));
+            var nuevoProducto = new Producto("Coca-Cola", 15.0m, "Bebida");
+            _tienda.AgregarProducto(nuevoProducto);
+            Assert.Equal(nuevoProducto, _tienda.BuscarProducto("Coca-Cola"));
         }
 
         [Fact]
         public void BuscarProducto_DevuelveProducto()
         {
             //Si el producto existe nos devuelve el producto mismo
-            var tienda = new Tienda();
-            var producto = new Producto("Rasta", 5.5m, "Alfajor");
-            tienda.AgregarProducto(producto);
-            var productoBuscado = tienda.BuscarProducto("Rasta");
+            var productoBuscado = _tienda.BuscarProducto("Rasta");
             Assert.NotNull(productoBuscado);
             Assert.Equal("Rasta", productoBuscado.Nombre);
         }
@@ -36,64 +39,50 @@ namespace TestGestionTienda
         public void BuscarProducto_LanzaExcepcion()
         {
             //Si el producto no existe nos lanza una excepción
-            var tienda = new Tienda();
-            var excepcion = Assert.Throws<Exception>(() => tienda.BuscarProducto("Pepsi"));
-            Assert.Equal("El producto Pepsi no se encontró en la tienda.", excepcion.Message);
+            var excepcion = Assert.Throws<Exception>(() => _tienda.BuscarProducto("Naranja"));
+            Assert.Equal("El producto Naranja no se encontró en la tienda.", excepcion.Message);
         }
 
         [Fact]
         public void EliminarProducto_EliminaCorrectamente()
         {
             //Si el producto existe elimina el producto
-            var tienda = new Tienda();
-            var producto = new Producto("Rasta", 5.5m, "Alfajor");
-            tienda.AgregarProducto(producto);
-            var resultado = tienda.EliminarProducto("Rasta");
-            Assert.True(resultado);
-            Assert.Throws<Exception>(() => tienda.BuscarProducto("Rasta"));
+            var productoEliminar = _tienda.EliminarProducto("Rasta");
+            Assert.True(productoEliminar);
+            Assert.Throws<Exception>(() => _tienda.BuscarProducto("Rasta"));
         }
 
         [Fact]
         public void EliminarProducto_LanzaExcepcion()
         {
             //Si el producto no existe nos tira una excepción
-            var tienda = new Tienda();
-            var excepcion = Assert.Throws<Exception>(() => tienda.EliminarProducto("Pepsi"));
-            Assert.Equal("No se puede eliminar el producto Pepsi porque no existe en la tienda.",excepcion.Message);
+            var excepcion = Assert.Throws<Exception>(() => _tienda.EliminarProducto("Naranja"));
+            Assert.Equal("No se puede eliminar el producto Naranja porque no existe en la tienda.",excepcion.Message);
         }
 
         [Fact]
         public void ActualizarPrecio_PrecioActualizado()
         {
             //Si el producto existe actualiza el precio
-            var tienda = new Tienda();
-            var producto = new Producto("Rasta", 5.5m, "Alfajor");
-            tienda.AgregarProducto(producto);
-            tienda.ActualizarPrecio("Rasta", 8.0m);
-            var productoBuscado = tienda.BuscarProducto("Rasta");
-            Assert.Equal(8.0m, productoBuscado.Precio);
+            _tienda.ActualizarPrecio("Pepsi", 12.0m);
+            var producto = _tienda.BuscarProducto("Pepsi");
+            Assert.Equal(12.0m, producto.Precio);
         }
 
         [Fact]
         public void ActualizarPrecio_LanzaExcepcion()
         {
             // Si el producto no existe nos devuelve una excepcion
-            var tienda = new Tienda();
-            var exception = Assert.Throws<Exception>(() => tienda.ActualizarPrecio("Pepsi", 12.0m));
-            Assert.Equal("No se puede actualizar el precio del producto Pepsi porque no se encontró en la tienda.", exception.Message);
+            var exception = Assert.Throws<Exception>(() => _tienda.ActualizarPrecio("Naranja", 12.0m));
+            Assert.Equal("No se puede actualizar el precio del producto Naranja porque no se encontró en la tienda.", exception.Message);
         }
 
         [Fact]
         public void AplicarDescuento_Correctamente()
         {
-            // Hacemos prueba con Mock
-            var tienda = new Tienda();
-            var productoMock = new Producto("Rasta", 5.5m, "Alfajor");
-            tienda.AgregarProducto(productoMock);
-            tienda.AplicarDescuento("Rasta", 10);
-
-            // Verificar que el precio fue actualizado correctamente
-            Assert.Equal(4.95m, productoMock.Precio);  // 5.5 - 10% = 4.95
+            _tienda.AplicarDescuento("Pepsi", 10);
+            var producto = _tienda.BuscarProducto("Pepsi");
+            Assert.Equal(9.0m, producto.Precio);
         }
     }
 }
