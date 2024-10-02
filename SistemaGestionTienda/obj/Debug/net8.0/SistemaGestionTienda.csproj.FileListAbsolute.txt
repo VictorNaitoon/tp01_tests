@@ -1,0 +1,15 @@
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\bin\Debug\net8.0\SistemaGestionTienda.exe
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\bin\Debug\net8.0\SistemaGestionTienda.deps.json
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\bin\Debug\net8.0\SistemaGestionTienda.runtimeconfig.json
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\bin\Debug\net8.0\SistemaGestionTienda.dll
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\bin\Debug\net8.0\SistemaGestionTienda.pdb
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\SistemaGestionTienda.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\SistemaGestionTienda.AssemblyInfoInputs.cache
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\SistemaGestionTienda.AssemblyInfo.cs
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\SistemaGestionTienda.csproj.CoreCompileInputs.cache
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\SistemaGestionTienda.sourcelink.json
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\SistemaGestionTienda.dll
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\refint\SistemaGestionTienda.dll
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\SistemaGestionTienda.pdb
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\SistemaGestionTienda.genruntimeconfig.cache
+C:\Users\Victo\Documents\Programado Universitario\Análisis y Diseño de Sistema de Información II\Trabajos Practicos\SistemaGestionTienda\SistemaGestionTienda\obj\Debug\net8.0\ref\SistemaGestionTienda.dll
