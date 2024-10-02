@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Moq;
 
 namespace TestGestionTienda
 {
@@ -80,6 +81,19 @@ namespace TestGestionTienda
             var tienda = new Tienda();
             var exception = Assert.Throws<Exception>(() => tienda.ActualizarPrecio("Pepsi", 12.0m));
             Assert.Equal("No se puede actualizar el precio del producto Pepsi porque no se encontró en la tienda.", exception.Message);
+        }
+
+        [Fact]
+        public void AplicarDescuento_Correctamente()
+        {
+            // Hacemos prueba con Mock
+            var tienda = new Tienda();
+            var productoMock = new Producto("Rasta", 5.5m, "Alfajor");
+            tienda.AgregarProducto(productoMock);
+            tienda.AplicarDescuento("Rasta", 10);
+
+            // Verificar que el precio fue actualizado correctamente
+            Assert.Equal(4.95m, productoMock.Precio);  // 5.5 - 10% = 4.95
         }
     }
 }

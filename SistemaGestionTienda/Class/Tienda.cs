@@ -15,12 +15,12 @@ namespace SistemaGestionTienda.Class
             inventario = new List<Producto>();
         }
 
-        public void AgregarProducto(Producto producto)
+        public virtual void AgregarProducto(Producto producto)
         {
             inventario.Add(producto);
         }
 
-        public Producto BuscarProducto(string nombre)
+        public virtual Producto BuscarProducto(string nombre)
         {
             foreach (var producto in inventario)
             {
@@ -32,7 +32,7 @@ namespace SistemaGestionTienda.Class
             throw new Exception($"El producto {nombre} no se encontró en la tienda.");
         }
 
-        public bool EliminarProducto(string nombre)
+        public virtual bool EliminarProducto(string nombre)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace SistemaGestionTienda.Class
             }
         }
 
-        public void ActualizarPrecio(string nombre, decimal nuevoPrecio)
+        public virtual void ActualizarPrecio(string nombre, decimal nuevoPrecio)
         {
             try
             {
@@ -56,6 +56,20 @@ namespace SistemaGestionTienda.Class
             catch (Exception)
             {
                 throw new Exception($"No se puede actualizar el precio del producto {nombre} porque no se encontró en la tienda.");
+            }
+        }
+
+        public virtual void AplicarDescuento(string nombre, decimal porcentajeDescuento)
+        {
+            try
+            {
+                var producto = BuscarProducto(nombre);
+                var nuevoPrecio = producto.Precio - (producto.Precio * porcentajeDescuento / 100);
+                ActualizarPrecio(nombre, nuevoPrecio);
+            }
+            catch (Exception)
+            {
+                throw new Exception($"No se puede aplicar el descuento al producto {nombre} porque no existe.");
             }
         }
     }

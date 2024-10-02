@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "xqjYSbrXs5ZlAjgwRuf51WRJO4mV/aImh844AhcIu9vE8/R2oHDEIQg8W8uYXzWL7mukiChNbz8QVcdT6FGxQQ==",
+  "dgSpecHash": "Eew/jvdXK3bqmdsCs6UJCfPPDEU4Txc22Wfbnjls2lmDiKcClG2lyAMb+FXijQwD2EvMtgpjSwJTi12oI73jQw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Victo\\Documents\\Programado Universitario\\Análisis y Diseño de Sistema de Información II\\Trabajos Practicos\\SistemaGestionTienda\\SistemaGestionTienda\\SistemaGestionTienda.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Victo\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\Victo\\.nuget\\packages\\moq\\4.20.72\\moq.4.20.72.nupkg.sha512",
+    "C:\\Users\\Victo\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
