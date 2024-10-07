@@ -51,7 +51,7 @@ namespace SistemaGestionTienda.Class
             try
             {
                 var producto = BuscarProducto(nombre);
-                producto.Precio = nuevoPrecio;
+                producto.Precio = Math.Round(nuevoPrecio, 2);
             }
             catch (Exception)
             {
@@ -64,13 +64,32 @@ namespace SistemaGestionTienda.Class
             try
             {
                 var producto = BuscarProducto(nombre);
-                var nuevoPrecio = producto.Precio - (producto.Precio * porcentajeDescuento / 100);
-                ActualizarPrecio(nombre, nuevoPrecio);
+                var factor = 1 - (porcentajeDescuento / 100);
+                var nuevoPrecio = producto.Precio * factor;
+                ActualizarPrecio(nombre, Math.Round(nuevoPrecio, 2));
             }
             catch (Exception)
             {
                 throw new Exception($"No se puede aplicar el descuento al producto {nombre} porque no existe.");
             }
+        }
+
+        public virtual decimal calcular_total_carrito(List<string> productos)
+        {
+            decimal total = 0;
+            foreach (var nombre in productos)
+            {
+                try
+                {
+                    var producto = BuscarProducto(nombre);
+                    total += producto.Precio;
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
+            }
+            return total;
         }
     }
 }

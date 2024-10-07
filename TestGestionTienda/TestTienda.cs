@@ -84,5 +84,53 @@ namespace TestGestionTienda
             var producto = _tienda.BuscarProducto("Pepsi");
             Assert.Equal(9.0m, producto.Precio);
         }
+        
+        [Fact]
+        public void CalcularTotalCarrito_ConDescuentos_DevuelveTotalCorrecto()
+        {
+            //Agrego más productos y aplico descuentos en estos productos.
+            _tienda.AgregarProducto(new Producto("Chocolate", 20.0m, "Dulce"));
+            _tienda.AgregarProducto(new Producto("Galletas", 15.0m, "Snack"));
+            _tienda.AplicarDescuento("Galletas", 10); // 15.0m - 10% = 13.5m
+            _tienda.AplicarDescuento("Chocolate", 20); // 20.0m - 20% = 12.0m
+            //Creo un carrito de compras y calculo el total de la compra
+            var carrito = new List<string> { "Rasta", "Pepsi", "Chocolate", "Galletas" };
+            var total = _tienda.calcular_total_carrito(carrito);
+
+            Assert.Equal(44m, total);
+        }
+        
+        [Fact]
+        public void CalcularTotalCarrito_ConProductoInexistente()
+        {
+            //Creo un carrito con un producto que no tenemos en la tienda y calculamos el total de la compra
+            var carrito = new List<string> { "Rasta", "Naranja", "Pepsi" };
+            var total = _tienda.calcular_total_carrito(carrito);
+
+            Assert.Equal(15.5m, total);
+        }
+        
+        [Fact]
+        public void FlujoCompleto()
+        {
+            //Agrego nuevos productos a la tienda
+            _tienda.AgregarProducto(new Producto("Chocolate", 20.0m, "Dulce"));
+            _tienda.AgregarProducto(new Producto("Galletas", 15.0m, "Snack"));
+            //Aplico descuentos algunos productos
+            _tienda.AplicarDescuento("Rasta", 10); // 5.5m - 10% = 4.95m
+            _tienda.AplicarDescuento("Chocolate", 20); // 20.0m - 20% = 16.0m
+            //Actualizo el precio de un producto
+            _tienda.ActualizarPrecio("Pepsi", 12.0m);
+            //Elimino un producto de la tienda
+            _tienda.EliminarProducto("Galletas");
+            //Creo un carrito de compras
+            var carrito = new List<string> { "Rasta", "Pepsi", "Chocolate", "Galletas" };
+            //Calculo el monto total a pagar 
+            var total = _tienda.calcular_total_carrito(carrito);
+
+            //Verificar total (4.95m + 12.0m + 16.0m = 32.95m)
+            Assert.Equal(32.95m, total);
+        }
+        
     }
 }
